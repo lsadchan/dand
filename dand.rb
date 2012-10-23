@@ -1,13 +1,43 @@
-player_1 = "aaron"
-player_2 = "Dave"
-player_3 = "John"
-p1_health = 60
-p2_health = 80
-p3_health = 100
+class Player	
+	def initialize(name, health=100)
+		@name = name.capitalize
+		@health = health
+
+		info = "#{name.capitalize}'s health is ".ljust(30,'.')
+		puts "#{info} #{health}%"
+	end
+
+	def say_hello
+		puts "I'm #{@name} and my health is #{@health}%"
+	end
+
+	def blam
+		@health -= 10
+		puts "#{@name} has just been blammed, his health is now #{@health}%"
+	end
+
+	def w00t
+		@health += 15
+
+		if @health >= 100
+			@health = 100
+		end
+
+		puts "#{@name} has just been w00ted, his health is now #{@health}%"
+	end
+
+end
 
 
-puts "#{player_1}'s health is #{p1_health * 3}."
-puts "#{player_1}'s health is now #{p1_health / 9.0}.\n\r"
-
-puts "Players:\n\t#{player_1}\n\t#{player_2}\n\t#{player_3}\n\r"
-puts "Players Health:\n\t#{player_1}: #{p1_health}\n\t#{player_2}: #{p2_health}\n\t#{player_3}: #{p3_health}"
+player_1 = Player.new("aaron",80)
+player_2 = Player.new("sam", 50)
+player_3 = Player.new("dave")
+puts "\n"
+player_1.say_hello
+player_2.say_hello
+player_3.say_hello
+puts "\n"
+player_1.blam
+player_2.w00t
+player_3.w00t
+puts "\n"
