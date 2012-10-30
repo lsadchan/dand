@@ -1,4 +1,7 @@
-class Player	
+class Player
+	attr_reader :health
+	attr_accessor :name
+
 	def initialize(name, health=100)
 		@name = name.capitalize
 		@health = health
@@ -26,6 +29,10 @@ class Player
 		puts "#{@name} has just been w00ted, his health is now #{@health}%"
 	end
 
+	def score
+		@score = @health + @name.length
+	end
+
 end
 
 
@@ -41,3 +48,6 @@ player_1.blam
 player_2.w00t
 player_3.w00t
 puts "\n"
+puts "#{player_1.name}'s health is #{player_1.health}%."
+puts player_1.name = "Aragon"
+puts "I'm #{player_1.name}, my health is #{player_1.health} and my score is #{player_1.score}"
