@@ -1,53 +1,19 @@
-class Player
-	attr_reader :health
-	attr_accessor :name
-
-	def initialize(name, health=100)
-		@name = name.capitalize
-		@health = health
-
-		info = "#{name.capitalize}'s health is ".ljust(30,'.')
-		puts "#{info} #{health}%"
-	end
-
-	def say_hello
-		puts "I'm #{@name} and my health is #{@health}%"
-	end
-
-	def blam
-		@health -= 10
-		puts "#{@name} has just been blammed, his health is now #{@health}%"
-	end
-
-	def w00t
-		@health += 15
-
-		if @health >= 100
-			@health = 100
-		end
-
-		puts "#{@name} has just been w00ted, his health is now #{@health}%"
-	end
-
-	def score
-		@score = @health + @name.length
-	end
-
-end
-
+require_relative 'game_turn.rb'
 
 player_1 = Player.new("aaron",80)
 player_2 = Player.new("sam", 50)
 player_3 = Player.new("dave")
-puts "\n"
-player_1.say_hello
-player_2.say_hello
-player_3.say_hello
-puts "\n"
-player_1.blam
-player_2.w00t
-player_3.w00t
-puts "\n"
-puts "#{player_1.name}'s health is #{player_1.health}%."
-puts player_1.name = "Aragon"
-puts "I'm #{player_1.name}, my health is #{player_1.health} and my score is #{player_1.score}"
+
+dungeons = Game.new("Dungeons & Dragons")
+
+dungeons.add_player(player_1)
+dungeons.add_player(player_2)
+dungeons.add_player(player_3)
+
+dungeons.play(3);
+
+
+
+# players.each do |p|
+# 	puts p.health
+# end
